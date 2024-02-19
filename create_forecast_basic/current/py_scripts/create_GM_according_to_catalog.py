@@ -1,6 +1,8 @@
 from py_scripts.functions import drop_geo
 
-def create_GM_according_to_catalog(stat, cbs_not_lie_lst, hh_size):
+def create_GM_according_to_catalog(stat, hh_size):
+    cbs_not_lie_lst=list(stat.query('fix_pop.isna() & fix_aprt.isna() & fix_class.isna() ').index)
+
     stat['count']=1
 
     stat=stat.reset_index()
