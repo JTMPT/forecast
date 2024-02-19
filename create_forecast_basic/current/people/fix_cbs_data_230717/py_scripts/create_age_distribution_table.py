@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def create_age_distribution_table(cbs_pop_pre, cbs_pop, stat):    
     col=list(cbs_pop_pre.iloc[:,1:])
 

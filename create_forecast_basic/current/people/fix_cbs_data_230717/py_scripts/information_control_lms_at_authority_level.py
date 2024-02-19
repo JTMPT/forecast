@@ -1,4 +1,13 @@
-from py_scripts.functions import drop_geo
+import os
+import sys
+import pandas as pd
+
+path = os.getcwd()
+parent = os.path.dirname(path)
+software_data_folder_location = os.path.dirname(parent)
+sys.path.append(software_data_folder_location)
+
+from functions import drop_geo
 
 def information_control_lms_at_authority_level(stat, pop_2020_cbs_muni):
     stat['CR_PNIM']=stat['CR_PNIM'].fillna(0).astype(int)

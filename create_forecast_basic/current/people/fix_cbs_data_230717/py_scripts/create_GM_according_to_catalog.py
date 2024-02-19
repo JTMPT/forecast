@@ -1,4 +1,13 @@
-from py_scripts.functions import drop_geo
+import os
+import sys
+import pandas as pd
+
+path = os.getcwd()
+parent = os.path.dirname(path)
+software_data_folder_location = os.path.dirname(parent)
+sys.path.append(software_data_folder_location)
+
+from functions import drop_geo
 
 def create_GM_according_to_catalog(stat, hh_size):
     cbs_not_lie_lst=list(stat.query('fix_pop.isna() & fix_aprt.isna() & fix_class.isna() ').index)

@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def statistical_areas_layer(stat, stat_aprt, stat_join_from_main_to_secondary):
     col_name=['STAT','geometry']
     stat=stat[col_name]

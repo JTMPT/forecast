@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def fix_level_a_arab_jerus(col, stat_arab, cbs_pop_pre):
     col=['STAT', 'group_name']
     stat_arab=stat_arab[col]
