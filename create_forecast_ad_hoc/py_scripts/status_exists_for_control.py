@@ -4,7 +4,7 @@ import pandas as pd
 from functions import up_load_df
 from find_file import find_files_with_pattern
 
-def export_status_exists(forecast, software_data_folder_location,client_data_folder_location, file_date):
+def export_status_exists(create_forecast_basic_location, forecast, software_data_folder_location,client_data_folder_location, file_date):
     folder_path=r'{}\For_approval\Reference_tabels\shp'.format(client_data_folder_location)
     pattern='TAZ_V'
     matching_files=find_files_with_pattern(folder_path, pattern)
@@ -13,27 +13,28 @@ def export_status_exists(forecast, software_data_folder_location,client_data_fol
 
     # אם יש שכבות חדשות
     if len(matching_files) > 0:
-            filename=os.path.basename(matching_files[0])
+            filename=os.path.basename(matching_files[5])
             filepath=r'{}\{}'.format(folder_path, filename)
 
             #load excel file
-            workbook = load_workbook(filename=r"C:\Users\dpere\Documents\JTMT\forecast\create_forecast_basic\current\inputs_outputs.xlsx")
+            workbook = load_workbook(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
 
             #open workbook
             sheet = workbook.active
 
             #modify the desired cell
+            sheet["B3"] = folder_path
             sheet["B4"] = "True"
             sheet["B5"] = filepath
 
             #save the file
-            workbook.save(filename=r"C:\Users\dpere\Documents\JTMT\forecast\create_forecast_basic\current\inputs_outputs.xlsx")
+            workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
             # להריץ את קוד בסיס עם השכבות
             return forecast_2020
     # אם אין שכבות חדשות
     else:
         #load excel file
-        workbook = load_workbook(filename=r"C:\Users\dpere\Documents\JTMT\forecast\create_forecast_basic\current\inputs_outputs.xlsx")
+        workbook = load_workbook(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
 
         #open workbook
         sheet = workbook.active
@@ -43,7 +44,7 @@ def export_status_exists(forecast, software_data_folder_location,client_data_fol
         sheet["B5"] = ''
 
         #save the file
-        workbook.save(filename=r"C:\Users\dpere\Documents\JTMT\forecast\create_forecast_basic\current\inputs_outputs.xlsx")
+        workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
 
         forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location),'2020_jtmt_forcast_full_230720')
 

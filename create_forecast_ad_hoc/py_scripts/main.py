@@ -24,7 +24,7 @@ software_root_folder = os.path.dirname(path)
 software_data_folder_location = r'{}\forecast\create_forecast_ad_hoc'.format(software_root_folder)
 df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data_folder_location))
 
-# software_data_folder_location=df_inputs_outputs['location'][0]
+create_forecast_basic_location=df_inputs_outputs['location'][0]
 client_data_folder_location=df_inputs_outputs['location'][1]
 forecast_version=df_inputs_outputs['location'][2]
 v_date=df_inputs_outputs['location'][3]
@@ -40,26 +40,26 @@ forecast=add_geographical_Features(forecast, software_data_folder_location)
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
 #### מצב קיים לבקרה
-forecast_2020=export_status_exists(forecast, software_data_folder_location,client_data_folder_location, file_date)
+forecast_2020=export_status_exists(create_forecast_basic_location, forecast, software_data_folder_location,client_data_folder_location, file_date)
 
-#### העלאת מרכיבי טבלת אינדקס
-index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
+# # #### העלאת מרכיבי טבלת אינדקס
+# # index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
 
-### חלוקה לאזורי תנועה של התכניות
-divided_index=division_into_traffic_zones(index,forecast)
+# # ### חלוקה לאזורי תנועה של התכניות
+# # divided_index=division_into_traffic_zones(index,forecast)
 
-### שכבת אינדקס
-index_layer=index_layer_fun(divided_index)
+# # ### שכבת אינדקס
+# # index_layer=index_layer_fun(divided_index)
 
-#### ייצוא שכבת אינדקס לבקרת לקוח
-index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
+# # #### ייצוא שכבת אינדקס לבקרת לקוח
+# # index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
 
-### חישוב תחזית
+# # ### חישוב תחזית
 
-#### הוספת תוספת בעקבות האינדקס
-forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+# # #### הוספת תוספת בעקבות האינדקס
+# # forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
 
-#ייצוא תוצאות
-export_forecast(forecast, client_data_folder_location, file_date, forecast_version)
+# # #ייצוא תוצאות
+# # export_forecast(forecast, client_data_folder_location, file_date, forecast_version)
 
-print('Done')
+# # print('Done')
