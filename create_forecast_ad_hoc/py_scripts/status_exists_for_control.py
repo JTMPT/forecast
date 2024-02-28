@@ -23,9 +23,9 @@ def export_status_exists(create_forecast_basic_location, forecast, software_data
             sheet = workbook.active
 
             #modify the desired cell
-            sheet["B3"] = folder_path
-            sheet["B4"] = "True"
-            sheet["B5"] = filepath
+            sheet["B4"] = folder_path
+            sheet["B5"] = "True"
+            sheet["B6"] = filepath
 
             #save the file
             workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
@@ -40,8 +40,8 @@ def export_status_exists(create_forecast_basic_location, forecast, software_data
         sheet = workbook.active
 
         #modify the desired cell
-        sheet["B4"] = "False"
-        sheet["B5"] = ''
+        sheet["B5"] = "False"
+        sheet["B6"] = ''
 
         #save the file
         workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
