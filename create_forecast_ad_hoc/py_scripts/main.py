@@ -1,5 +1,4 @@
 import os
-import sys
 import pandas as pd
 from adding_an_addition_following_the_index import adding_an_addition
 from division_into_traffic_zones_of_plans import division_into_traffic_zones
