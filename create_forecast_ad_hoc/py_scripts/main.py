@@ -41,25 +41,25 @@ forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
 #### מצב קיים לבקרה
 forecast_2020=export_status_exists(forecast, software_data_folder_location,client_data_folder_location, file_date)
-print(forecast_2020)
-# #### העלאת מרכיבי טבלת אינדקס
-# index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
 
-# ### חלוקה לאזורי תנועה של התכניות
-# divided_index=division_into_traffic_zones(index,forecast)
+#### העלאת מרכיבי טבלת אינדקס
+index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
 
-# ### שכבת אינדקס
-# index_layer=index_layer_fun(divided_index)
+### חלוקה לאזורי תנועה של התכניות
+divided_index=division_into_traffic_zones(index,forecast)
 
-# #### ייצוא שכבת אינדקס לבקרת לקוח
-# index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
+### שכבת אינדקס
+index_layer=index_layer_fun(divided_index)
 
-# ### חישוב תחזית
+#### ייצוא שכבת אינדקס לבקרת לקוח
+index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
 
-# #### הוספת תוספת בעקבות האינדקס
-# forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+### חישוב תחזית
 
-# #ייצוא תוצאות
-# export_forecast(forecast, client_data_folder_location, file_date, forecast_version)
+#### הוספת תוספת בעקבות האינדקס
+forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
 
-# print('Done')
+#ייצוא תוצאות
+export_forecast(forecast, client_data_folder_location, file_date, forecast_version)
+
+print('Done')
