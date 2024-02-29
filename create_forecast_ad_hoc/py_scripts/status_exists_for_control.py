@@ -1,4 +1,3 @@
-import os
 from openpyxl import load_workbook
 import pandas as pd
 from functions import up_load_df
@@ -17,8 +16,13 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
 
     # אם יש שכבות חדשות
     if len(matching_files) > 0:
-            filename=os.path.basename(matching_files[5])
-            filepath=r'{}\shp\{}'.format(folder_path, filename)
+            suffix = '.shp'
+            filtered_files_strings = []
+            for string in matching_files:
+                if string.endswith(suffix):
+                    filtered_files_strings.append(string)
+
+            filepath=filtered_files_strings[0]
 
             #load excel file
             workbook = load_workbook(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))

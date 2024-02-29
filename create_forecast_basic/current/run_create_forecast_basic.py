@@ -4,7 +4,6 @@ import subprocess
 
 path = os.getcwd()
 software_folder_location = r'{}\create_forecast_basic\current'.format(path)
-print(software_folder_location)
 
 def run_notebook(notebook_path):
 
