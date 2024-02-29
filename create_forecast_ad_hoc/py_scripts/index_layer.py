@@ -99,6 +99,34 @@ def index_layer_fun(divided_index):
         index['emp_{}'.format(c)]=index['emp_{}'.format(c)]*index['precent_till_2040']*index['Risk_factor']*index['emp_fill_factor']
         index['add_emp_{}'.format(c)]=index['emp_{}'.format(c)]+index['{}_m2'.format(c)]/locals()['m2_{}_to_emp'.format(c)]
 
+        col=['Taz_num','id',
+    'add_aprt',
+    'add_aprt_nominally',
+    'add_old_age_home',
+    'add_old_age_home_nominally',
+    'add_uni_dorms',
+    'add_uni_dorms_nominally',
+    'add_uni_students',
+    'add_uni_students_nominally',
+    'Classrooms','Classrooms_nominally',
+    'Commerce_m2',
+    'Commerce_m2_nominally',
+    'add_emp_Commerce',
+    'Tourism_m2',
+    'Tourism_m2_nominally',
+    'add_emp_Tourism',
+    'Business_m2',
+    'Business_m2_nominally',
+    'add_emp_Business',
+    'Public_m2',
+    'Public_m2_nominally',
+    'add_emp_Public',
+    'Industry_m2',
+    'Industry_m2_nominally',
+    'add_emp_Industry']
+        
     drop_geometry=index.drop(['geometry'], axis=1)
-    index_by_taz=drop_geometry.pivot_table(index='Taz_num', aggfunc='sum').fillna(0)
+
+    index_by_taz=drop_geometry[col].pivot_table(index='Taz_num', aggfunc='sum').fillna(0)
+    print(index_by_taz)
     return index_by_taz

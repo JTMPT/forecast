@@ -4,7 +4,7 @@ from functions import up_load_df,delet_and_add_by_TAZ
 import pandas as pd
 from functions import up_load_df, delet_and_add_by_TAZ
 
-def export_forecast(forecast, client_data_folder_location, file_date, forecast_version):
+def export_forecast(forecast, client_data_folder_location, file_date, forecast_version,software_data_folder_location):
     col = [
         'Taz_num', 
         'Name_hebre', 
@@ -43,8 +43,8 @@ def export_forecast(forecast, client_data_folder_location, file_date, forecast_v
 
     forecast[col].to_excel(save_excel_path, index=False)
 
-    BaseProjections2040 = pd.read_csv(r'W:\Data\Forecast\Tools\creat_forecast_ad_hoc\background_files\BaseProjections2040.csv')
-    puma2040 = pd.read_csv(r'W:\Data\Forecast\Tools\creat_forecast_ad_hoc\background_files\puma2040.csv')
+    BaseProjections2040 = pd.read_csv(r'{}\background_files\BaseProjections2040.csv'.format(software_data_folder_location))
+    puma2040 = pd.read_csv(r'{}\background_files\puma2040.csv'.format(software_data_folder_location))
 
     forecast.loc[forecast['Taz_num'] < 7001, 'AGG_TAZ'] = forecast['Taz_num'] // 100
     forecast.loc[forecast['Taz_num'] >= 7001, 'AGG_TAZ'] = forecast['Taz_num'] // 10
