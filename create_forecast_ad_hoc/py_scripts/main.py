@@ -20,8 +20,7 @@ file_date=pd.Timestamp.today().strftime('%y%m%d')
 
 #העלת משתנים להרצת הקוד
 path = os.getcwd()
-software_root_folder = os.path.dirname(path)
-software_data_folder_location = r'{}\forecast_git\create_forecast_ad_hoc'.format(software_root_folder)
+software_data_folder_location = r'{}\create_forecast_ad_hoc'.format(path)
 df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data_folder_location))
 
 create_forecast_basic_location=df_inputs_outputs['location'][0]
