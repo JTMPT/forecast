@@ -21,7 +21,7 @@ file_date=pd.Timestamp.today().strftime('%y%m%d')
 #העלת משתנים להרצת הקוד
 path = os.getcwd()
 software_root_folder = os.path.dirname(path)
-software_data_folder_location = r'{}\forecast\create_forecast_ad_hoc'.format(software_root_folder)
+software_data_folder_location = r'{}\forecast_git\create_forecast_ad_hoc'.format(software_root_folder)
 df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data_folder_location))
 
 create_forecast_basic_location=df_inputs_outputs['location'][0]
@@ -31,6 +31,7 @@ forecast_version=df_inputs_outputs['location'][2]
 v_date=df_inputs_outputs['location'][3]
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
 
+print(create_forecast_basic_location)
 # העלת אזורי תנועה לחישוב
 forecast=clientTaz(client_data_folder_location)
 
