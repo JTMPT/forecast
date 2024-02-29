@@ -128,5 +128,4 @@ def index_layer_fun(divided_index):
     drop_geometry=index.drop(['geometry'], axis=1)
 
     index_by_taz=drop_geometry[col].pivot_table(index='Taz_num', aggfunc='sum').fillna(0)
-    print(index_by_taz)
     return index_by_taz
