@@ -40,7 +40,7 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
             #save the file
             workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
             # להריץ את קוד בסיס עם השכבות
-            execution_result = run_notebook(r'{}\main.ipynb'.format(create_forecast_basic_location))
+            execution_result = run_notebook(r'{}\run_basic_from_ad_hoc.ipynb'.format(create_forecast_basic_location))
             print("ad-hoc-Notebook execution result:", execution_result)
 
             if execution_result == True:
