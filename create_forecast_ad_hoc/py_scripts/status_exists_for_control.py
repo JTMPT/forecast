@@ -1,3 +1,5 @@
+import os
+from shutil import copy
 from openpyxl import load_workbook
 import pandas as pd
 from functions import up_load_df
@@ -42,11 +44,24 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
             print("ad-hoc-Notebook execution result:", execution_result)
 
             if execution_result == True:
-                 forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location),'2020_jtmt_forcast_full_230720')
+                src_path = r'{}\forecast_2020_{}.xlsx'.format(folder_path, file_date)
+                destination_path = r'{}\forecast_2020_{}_with_taz_changes.xlsx'.format(folder_path, file_date)
 
-                 col=[]
+                copy(src_path, destination_path)
+                os.remove(src_path)
 
-                 col_20=['Taz_num','Taz_name',
+                src_full_path = r'{}\2020_jtmt_forcast_full_{}.xlsx'.format(folder_path, file_date)
+                destination_full_path = r'{}\2020_jtmt_forcast_full_{}_with_taz_changes.xlsx'.format(folder_path, file_date)
+
+                copy(src_full_path, destination_full_path)
+                os.remove(src_full_path)
+
+                forecast_2020=up_load_df(r'{}'.format(folder_path), r'2020_jtmt_forcast_full_{}_with_taz_changes'.format(file_date))
+                #  forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location),'2020_jtmt_forcast_full_230720')
+
+                col=[]
+
+                col_20=['Taz_num','Taz_name',
                 'main_secto',
                 'aprt_20', 'pop_without_dorms_yeshiva',
                 'student_toddlers',
@@ -58,11 +73,11 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
                 'emp_okev',
                 'emp_not_okev','student']
                  
-                 forecast_2020=pd.merge(forecast[col].reset_index(),forecast_2020[col_20],how='left',on='Taz_num').fillna(0)
+                forecast_2020=pd.merge(forecast[col].reset_index(),forecast_2020[col_20],how='left',on='Taz_num').fillna(0)
 
-                 save_excel_path=r'{}\For_approval\{}_forecast_2020_For_approval.xlsx'.format(client_data_folder_location,file_date)
+                save_excel_path=r'{}\For_approval\{}_forecast_2020_For_approval.xlsx'.format(client_data_folder_location,file_date)
 
-                 forecast_2020[col_20].to_excel(save_excel_path,index=False)
+                forecast_2020[col_20].to_excel(save_excel_path,index=False)
             return forecast_2020[col_20]
     # אם אין שכבות חדשות
     else:
