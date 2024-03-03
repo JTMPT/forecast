@@ -51,7 +51,7 @@ def export_forecast(forecast, client_data_folder_location, file_date, forecast_v
 
     forecast.rename(columns={'Taz_num': 'TAZ'}, inplace=True)
 
-    save_excel_path = r'{}\{}_puma2040.csv'.format(client_data_folder_location, file_date)
+    save_excel_path = r'{}\{}_puma2040_{}.csv'.format(client_data_folder_location, file_date,forecast_version)
 
     delet_and_add_by_TAZ(forecast, puma2040).to_csv(save_excel_path, index=False)
 

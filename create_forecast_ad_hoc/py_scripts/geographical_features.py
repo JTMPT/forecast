@@ -53,7 +53,6 @@ def add_geographical_Features(forecast, software_data_folder_location):
 
     # Rename columns# Rename columns with flipped names
     forecast.rename(columns={'ENG_NAME_nafa': 'zonetype'}, inplace=True)
-    forecast.rename(columns={'In_jerusal': 'jerusalem_city'}, inplace=True)
     forecast.rename(columns={'puma2040_csv_DISTRICT': 'DISTRICT'}, inplace=True)
     forecast.rename(columns={'BaseProjections2040_csv_urban': 'urban'}, inplace=True)
     forecast.rename(columns={'puma2040_csv_PUMA': 'PUMA'}, inplace=True)
@@ -62,8 +61,8 @@ def add_geographical_Features(forecast, software_data_folder_location):
 
     # Data processing for feature columns
     forecast.loc[forecast['main_sector'] == 'Palestinian', 'zonetype'] = 'Palestinian'
-    forecast['in_jerusalem_metropolin'] = 'yes'
-    forecast.loc[forecast['jeru_metro'] == 0, 'in_jerusalem_metropolin'] = 'no'
+    forecast['in_jerusalem_metropolin'] = 1
+    forecast.loc[forecast['jeru_metro'] == 0, 'in_jerusalem_metropolin'] = 0
     forecast['yosh'] = 0
     forecast.loc[forecast['zonetype'] == 'Judea and Samaria', 'yosh'] = 1
 
