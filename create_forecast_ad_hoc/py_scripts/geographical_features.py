@@ -32,7 +32,7 @@ def add_geographical_Features(forecast, software_data_folder_location):
     forecast_point_PUMA = forecast_point.sjoin(
         PUMA)[['Taz_num', 'puma2040_csv_PUMA']]
     forecast_point_jerusalem_city = forecast_point.sjoin(
-        jerusalem_city)[['Taz_num', 'In_jerusal']]
+        jerusalem_city)[['Taz_num', 'jerusalem_city']]
     forecast_point_subdistrict_il = forecast_point.sjoin(
         subdistrict_il[['geometry', 'ENG_NAME_nafa']])[['Taz_num', 'ENG_NAME_nafa']]
     forecast_point_muni_JTMT = forecast_point.query('main_sector!="Palestinian"').sjoin(
