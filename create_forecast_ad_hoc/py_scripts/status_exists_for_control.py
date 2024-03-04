@@ -90,7 +90,7 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
         #modify the desired cell
         sheet["B4"] = forecast_version_basic_folder_location
         sheet["B5"] = False
-        sheet["B6"] = r'{}\background_files'.format(create_forecast_basic_location)
+        sheet["B6"] = r'{}\background_files\TAZ_V4_230518_Published.shp'.format(create_forecast_basic_location)
 
         #save the file
         workbook.save(filename=r"{}\inputs_outputs.xlsx".format(create_forecast_basic_location))
