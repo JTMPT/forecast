@@ -32,7 +32,7 @@ def add_geographical_Features(forecast, software_data_folder_location):
     forecast_point_PUMA = forecast_point.sjoin(
         PUMA)[['Taz_num', 'puma2040_csv_PUMA']]
     forecast_point_jerusalem_city = forecast_point.sjoin(
-        jerusalem_city)[['Taz_num', 'In_jerusal']]
+        jerusalem_city)[['Taz_num', 'jerusalem_city']]
     forecast_point_subdistrict_il = forecast_point.sjoin(
         subdistrict_il[['geometry', 'ENG_NAME_nafa']])[['Taz_num', 'ENG_NAME_nafa']]
     forecast_point_muni_JTMT = forecast_point.query('main_sector!="Palestinian"').sjoin(
@@ -53,7 +53,6 @@ def add_geographical_Features(forecast, software_data_folder_location):
 
     # Rename columns# Rename columns with flipped names
     forecast.rename(columns={'ENG_NAME_nafa': 'zonetype'}, inplace=True)
-    forecast.rename(columns={'In_jerusal': 'jerusalem_city'}, inplace=True)
     forecast.rename(columns={'puma2040_csv_DISTRICT': 'DISTRICT'}, inplace=True)
     forecast.rename(columns={'BaseProjections2040_csv_urban': 'urban'}, inplace=True)
     forecast.rename(columns={'puma2040_csv_PUMA': 'PUMA'}, inplace=True)
@@ -62,8 +61,8 @@ def add_geographical_Features(forecast, software_data_folder_location):
 
     # Data processing for feature columns
     forecast.loc[forecast['main_sector'] == 'Palestinian', 'zonetype'] = 'Palestinian'
-    forecast['in_jerusalem_metropolin'] = 'yes'
-    forecast.loc[forecast['jeru_metro'] == 0, 'in_jerusalem_metropolin'] = 'no'
+    forecast['in_jerusalem_metropolin'] = 1
+    forecast.loc[forecast['jeru_metro'] == 0, 'in_jerusalem_metropolin'] = 0
     forecast['yosh'] = 0
     forecast.loc[forecast['zonetype'] == 'Judea and Samaria', 'yosh'] = 1
 
