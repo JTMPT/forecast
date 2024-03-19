@@ -31,5 +31,5 @@ import run_bau_from_future
 # # Step 3: Call Function
 run_arab_and_palestinian_from_future.run_notebook(r'{}\arab_and_palestinian\run_arab_and_palestinian.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
 run_JTMT_from_future.run_notebook(r'{}\JTMT\run_jtmt.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
-run_iplan_from_future.run_notebook(r'{}\iplan\run_bau.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
-run_bau_from_future.run_notebook(r'{}\bau\run_iplan.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
+run_iplan_from_future.run_notebook(r'{}\iplan\run_iplan.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
+run_bau_from_future.run_notebook(r'{}\bau\run_bau.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
