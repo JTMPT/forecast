@@ -15,7 +15,9 @@ os.chdir(arab_and_palestinian_directory)
 # # Step 2: Import Module
 sys.path.append(JTMT_directory)  # Add target directory to sys.path
 sys.path.append(arab_and_palestinian_directory)  # Add target directory to sys.path
+import run_arab_and_palestinian_from_future  # Assuming my_function.py is named as my_function_module.py
 import run_JTMT_from_future  # Assuming my_function.py is named as my_function_module.py
 
 # # Step 3: Call Function
+run_arab_and_palestinian_from_future.run_notebook(r'{}\arab_and_palestinian\run_arab_and_palestinian_from_future.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
 run_JTMT_from_future.run_notebook(r'{}\JTMT\run_JTMT_from_future.ipynb'.format(df_inputs_outputs['location'][0]))  # Call the function from the imported module
