@@ -16,7 +16,7 @@ def create_client_documentation_df(client_data_folder_location, forecast_version
         }
 
     # Create the DataFrame
-    documentation_df = pd.DataFrame(data, index=['גירסא', 'איזורי תנועה חדשים', 'שכבות'])
+    documentation_df = pd.DataFrame(data, index=['גירסת תחזיות אד-הוק', 'נעשה שינוי באיזורי תנועה של גירסא 4', 'קלטים'])
 
     documentation_df.to_excel(r'{}\documentation_df.xlsx'.format(client_data_folder_location))
     return documentation_df
