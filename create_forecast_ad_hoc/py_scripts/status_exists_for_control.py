@@ -2,8 +2,8 @@ import os
 from shutil import copy
 from openpyxl import load_workbook
 import pandas as pd
-from functions import up_load_df
-from find_file import find_files_with_pattern
+from functions import up_load_df, check_new_layers
+# from find_file import find_files_with_pattern
 import sys
 
 def export_status_exists(create_forecast_basic_location, forecast_version_basic_folder_location, forecast, software_data_folder_location,client_data_folder_location, file_date):
@@ -11,8 +11,8 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
     from run_create_forecast_basic import run_notebook
 
     folder_path=r'{}\For_approval\Reference_tabels'.format(client_data_folder_location)
-    pattern='TAZ_V'
-    matching_files=find_files_with_pattern(r'{}\shp'.format(folder_path), pattern)
+
+    matching_files = check_new_layers(folder_path)
 
     forecast_2020=None
 

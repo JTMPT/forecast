@@ -1,10 +1,19 @@
 import pandas as pd
+from functions import check_new_layers
 
 def create_client_documentation_df(client_data_folder_location, forecast_version_num):
-    # Define the data
-    data = {
-        'Value': [forecast_version_num, 'כן', 'שכבות']
-    }
+    folder_path=r'{}\For_approval\Reference_tabels'.format(client_data_folder_location)
+    matching_files = check_new_layers(folder_path)
+
+    if len(matching_files) > 0:
+        # Define the data
+        data = {
+            'Value': [forecast_version_num, 'כן', 'שכבות']
+        }
+    else:
+        data = {
+            'Value': [forecast_version_num, 'לא', 'שכבות']
+        }
 
     # Create the DataFrame
     documentation_df = pd.DataFrame(data, index=['גירסא', 'איזורי תנועה חדשים', 'שכבות'])

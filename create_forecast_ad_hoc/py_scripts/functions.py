@@ -1,3 +1,4 @@
+import os
 import fiona
 import geopandas as gpd
 import pandas as pd
@@ -57,10 +58,33 @@ def split_index_by_taz(index,taz,min_prec,col_name_to_split):
         
     return index
 
-
 def delet_and_add_by_TAZ(forecast,df):
     lst_of_taz=list(forecast.TAZ)
     #מחיקה של אזורי תנועה החדשים למנוע כפילות
     df=df.loc[~(df['TAZ'].isin(lst_of_taz))]
     #הוספה של האזורי תנועה החדשים
     return pd.concat([df, forecast[list(df)]], axis=0)
+
+def find_files_with_pattern(folder_path, pattern):
+    """
+    Find files in a directory that match a certain pattern.
+    
+    Args:
+    - directory (str): The directory path.
+    - pattern (str): The pattern to search for in file names.
+    
+    Returns:
+    - List of file paths matching the pattern.
+    """
+    files = []
+    for root, _, filenames in os.walk(folder_path):
+        for filename in filenames:
+            if pattern in filename:
+                files.append(os.path.join(root, filename))
+    return files
+
+def check_new_layers(folder_path):
+    pattern='TAZ_V'
+    matching_files=find_files_with_pattern(r'{}\shp'.format(folder_path), pattern)
+
+    return matching_files
