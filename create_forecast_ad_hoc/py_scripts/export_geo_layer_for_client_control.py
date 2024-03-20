@@ -5,6 +5,5 @@ def export_geo_layer(forecast, client_data_folder_location,file_date):
     
     col=['Taz_num','Name_hebre', 'main_sector', 'classification_name','Student_by_Classrooms','geometry']
 
-    
     forecast[col].to_file(save_shp_path,index=False,encoding='UTF-8')
     return forecast

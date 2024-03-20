@@ -57,7 +57,6 @@ def export_status_exists(create_forecast_basic_location, forecast_version_basic_
                 os.remove(src_full_path)
 
                 forecast_2020=up_load_df(r'{}'.format(folder_path), r'2020_jtmt_forcast_full_{}_with_taz_changes'.format(file_date))
-                #  forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location),'2020_jtmt_forcast_full_230720')
 
                 col=[]
 

@@ -1,7 +1,8 @@
 import pandas as pd
+from client_documentation import add_layer_for_documentation
 from functions import make_point, up_load_gdb, up_load_shp
 
-def add_geographical_Features(forecast, software_data_folder_location):
+def add_geographical_Features(forecast, software_data_folder_location, client_data_folder_location):
     forecast_point = make_point(forecast)
 
     # Load data layers
@@ -22,6 +23,8 @@ def add_geographical_Features(forecast, software_data_folder_location):
     jeru_metro_jtmt_border = up_load_shp(
         r'{}\background_files\jeru_metro_jtmt_border_221114.shp'.format(software_data_folder_location))
 
+    add_layer_for_documentation(client_data_folder_location, 'jeru_metro_jtmt_border_221114')
+    
     # Geographical join between traffic zones and data layers
     forecast_point_DISTRICT = forecast_point.sjoin(
         DISTRICT)[['Taz_num', 'puma2040_csv_DISTRICT']]

@@ -3,16 +3,23 @@ import pandas as pd
 def create_client_documentation_df(client_data_folder_location, forecast_version_num):
     # Define the data
     data = {
-        'Value': [forecast_version_num, 'כן', 'Nan']
+        'Value': [forecast_version_num, 'כן', 'שכבות']
     }
 
     # Create the DataFrame
-    df = pd.DataFrame(data, index=['גירסא', 'איזורי תנועה חדשים', 'שכבות'])
+    documentation_df = pd.DataFrame(data, index=['גירסא', 'איזורי תנועה חדשים', 'שכבות'])
 
-    # Append empty rows with values 2, 3, and 4
-    df = df._append(pd.DataFrame({'Value': [2, 3, 4]}, index=['', '', '']))
+    documentation_df.to_excel(r'{}\documentation_df.xlsx'.format(client_data_folder_location))
+    return documentation_df
 
-    print(df)
-    return df
+def add_layer_for_documentation(client_data_folder_location, layer):
+    excel_file_path = r'{}\documentation_df.xlsx'.format(client_data_folder_location)
 
-create_client_documentation_df(r'C:\Users\dpere\Documents\JTMT\Projects\תחזיות_דמוגרפיות\קבצי עבודה\142_מתחם_אנגל\בהת', 1)
+    documentation_df = pd.read_excel(excel_file_path)
+    
+    documentation_df = documentation_df._append(pd.DataFrame({'Value': [layer]}, index=['']))
+
+    modified_excel_file_path = excel_file_path
+    documentation_df.to_excel(modified_excel_file_path, index=False)
+
+    return documentation_df

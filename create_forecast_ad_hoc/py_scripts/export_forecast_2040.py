@@ -1,8 +1,5 @@
 import pandas as pd
-from functions import up_load_df,delet_and_add_by_TAZ
-
-import pandas as pd
-from functions import up_load_df, delet_and_add_by_TAZ
+from functions import delet_and_add_by_TAZ
 
 def export_forecast(forecast, client_data_folder_location, file_date, forecast_version,software_data_folder_location):
     col = [
