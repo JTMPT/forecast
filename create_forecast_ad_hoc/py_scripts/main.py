@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from adding_an_addition_following_the_index import adding_an_addition
+from client_documentation import create_client_documentation_df
 from division_into_traffic_zones_of_plans import division_into_traffic_zones
 from export_geo_layer_for_client_control import export_geo_layer
 from export_index_layer_for_client_control import export_index_layer
@@ -29,37 +30,40 @@ client_data_folder_location=df_inputs_outputs['location'][1]
 forecast_version=df_inputs_outputs['location'][2]
 v_date=df_inputs_outputs['location'][3]
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
+forecast_version_num=df_inputs_outputs['location'][5]
 
-# העלת אזורי תנועה לחישוב
-forecast=clientTaz(client_data_folder_location)
+create_client_documentation_df(client_data_folder_location, forecast_version_num)
 
-#### הוספת מאפיינים גיאוגרפים לאזורי תנועה
-forecast=add_geographical_Features(forecast, software_data_folder_location)
+# # העלת אזורי תנועה לחישוב
+# forecast=clientTaz(client_data_folder_location)
 
-# #### ייצוא שכבת אזורי תנועה לבקרת לקוח
-forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
+# #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
+# forecast=add_geographical_Features(forecast, software_data_folder_location)
 
-#### מצב קיים לבקרה
-forecast_2020=export_status_exists(create_forecast_basic_location, forecast_version_basic_folder_location, forecast, software_data_folder_location,client_data_folder_location, file_date)
+# # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
+# forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
-# #### העלאת מרכיבי טבלת אינדקס
-index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
+# #### מצב קיים לבקרה
+# forecast_2020=export_status_exists(create_forecast_basic_location, forecast_version_basic_folder_location, forecast, software_data_folder_location,client_data_folder_location, file_date)
 
-### חלוקה לאזורי תנועה של התכניות
-divided_index=division_into_traffic_zones(index,forecast)
+# # #### העלאת מרכיבי טבלת אינדקס
+# index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
 
-### שכבת אינדקס
-index_layer=index_layer_fun(divided_index)
+# ### חלוקה לאזורי תנועה של התכניות
+# divided_index=division_into_traffic_zones(index,forecast)
 
-# #### ייצוא שכבת אינדקס לבקרת לקוח
-index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
+# ### שכבת אינדקס
+# index_layer=index_layer_fun(divided_index)
 
-# ### חישוב תחזית
+# # #### ייצוא שכבת אינדקס לבקרת לקוח
+# index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
 
-#### הוספת תוספת בעקבות האינדקס
-forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+# # ### חישוב תחזית
 
-#ייצוא תוצאות
-export_forecast(forecast, client_data_folder_location, file_date, forecast_version,software_data_folder_location)
+# #### הוספת תוספת בעקבות האינדקס
+# forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
 
-print('Done')
+# #ייצוא תוצאות
+# export_forecast(forecast, client_data_folder_location, file_date, forecast_version,software_data_folder_location)
+
+# print('Done')
