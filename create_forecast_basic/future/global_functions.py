@@ -82,3 +82,143 @@ def find_files_with_pattern(folder_path, pattern):
             if pattern in filename:
                 files.append(os.path.join(root, filename))
     return files
+
+def print_before(name):
+    return print("{} before: ".format(name),round(forecast['{}'.format(name)].sum(),0))
+
+def print_after(name):
+    return print("{} after: ".format(name),round(forecast['{}'.format(name)].sum(),0))
+
+def logic_test_for_forecast(taz):
+    print ('taz num under 0:',list(taz.loc[taz['TAZ']<=0]['TAZ']))
+    
+    print ('taz num duplicate:',list(taz.loc[taz.duplicated(subset='TAZ',keep=False)]['TAZ']))
+    
+    print ('yosh_unique:',list(taz.yosh.unique()))
+    
+    print ('in_jerusalem_metropolin_unique:',list(taz.in_jerusalem_metropolin.unique()))
+    
+    print ('jerusalem_city_unique:',list(taz.jerusalem_city.unique()))
+    
+    print ('sector_unique:',list(taz.sector.unique()))
+
+    col=['hh_total',
+    'pop',
+    'age0_4',
+    'age5_9',
+    'age10_14',
+    'age15_19',
+    'age20_24',
+    'age25_29',
+    'age30_34',
+    'age35_39',
+    'age40_44',
+    'age45_49',
+    'age50_54',
+    'age55_59',
+    'age60_64',
+    'age65_69',
+    'age70_74',
+    'age75up',
+    'emp_tot',
+    'indus',
+    'com_hotel',
+    'business',
+    'public',
+    'education',
+    'agri',
+    'student',
+    'univ',
+    'UO_Hi_Ed',
+    'pop_emp_employed']
+
+    taz_to_check_minus=[]
+    col_to_check_minus=[]
+    for i in col:
+        taz_to_check_minus=taz_to_check_minus+list(taz.loc[taz['{}'.format(i)]<0]['TAZ'])
+    
+    
+    print ('taz num with minus:',list(set(taz_to_check_minus)))
+    
+    print ('pop more then hh:',list(taz.loc[taz['sector']!="Palestinian"].loc[~(taz['hh_total']<=taz['pop'])]['TAZ']))
+    
+    print ('hh missing pop:',list(taz.loc[taz['sector']!="Palestinian"].loc[taz['hh_total']>0].loc[taz['pop']<=0]['TAZ']))
+    
+    print ('pop missing hh:',list(taz.loc[taz['sector']!="Palestinian"].loc[taz['pop']>0].loc[taz['hh_total']<=0]['TAZ']))
+
+    col=['age0_4',
+    'age5_9',
+    'age10_14',
+    'age15_19',
+    'age20_24',
+    'age25_29',
+    'age30_34',
+    'age35_39',
+    'age40_44',
+    'age45_49',
+    'age50_54',
+    'age55_59',
+    'age60_64',
+    'age65_69',
+    'age70_74',
+    'age75up',]
+
+    taz['pop_check']=taz[col].sum(axis=1)-taz['pop']
+    
+    taz['pop_check']=taz['pop_check'].round(0)
+    
+    print ('pop vs age dis Mistake:',list(taz.loc[taz['sector']!="Palestinian"].loc[taz['pop_check']!=0]['TAZ']))   
+
+    col=[
+    'age0_4',
+    'age5_9',
+    'age10_14',
+    'age15_19',
+    'age20_24',
+    'age25_29',
+    'age30_34',
+    'age35_39',
+    'age40_44',
+    'age45_49',
+    'age50_54',
+    'age55_59',
+    'age60_64',
+    'age65_69',
+    'age70_74',
+    'age75up']
+
+    taz_to_check_for_age=[]
+    for i in col:
+        taz_to_check_for_age=taz_to_check_for_age+list(taz.loc[taz['{}'.format(i)]>0].loc[taz['pop']<=0]['TAZ'])
+        taz_to_check_for_age=taz_to_check_for_age+list(taz.loc[taz['{}'.format(i)]>0].loc[taz['hh_total']<=0]['TAZ'])
+        
+    print ('taz num with age dis prob:',taz_to_check_for_age)
+
+    col=['indus',
+    'com_hotel',
+    'business',
+    'public',
+    'education',
+    'agri']
+
+    taz['emp_check']=taz[col].sum(axis=1)-taz['emp_tot']
+    taz['emp_check']=abs(taz['emp_check'].round(0))
+    
+    taz_prob_emp_total=list(taz.loc[taz['emp_check']>1]['TAZ'])
+    
+    print ('taz num with emp total prob:',taz_prob_emp_total)
+
+    taz_to_check_for_split_emp=[]
+    
+    for i in col:
+        taz_to_check_for_split_emp=taz_to_check_for_split_emp+list(taz.loc[taz['{}'.format(i)]>0].loc[taz['emp_tot']<=0]['TAZ'])
+        
+    print ('taz num with emp dis prob:',taz_to_check_for_split_emp)
+
+    print ('taz num with pop_emp_employed worng :',list(taz.loc[taz['sector']!="Palestinian"].loc[taz['pop_emp_employed']>0].loc[taz['pop']<=0]['TAZ']))
+    
+    return
+
+def drop_geo(geoDF):
+    geoDF = geoDF.drop(columns='geometry')
+    return geoDF
