@@ -61,8 +61,7 @@ def split_index_by_taz(index,taz,min_prec,col_name_to_split):
     index=pd.merge(index.reset_index(),index_taz,on='id')
 
     for c in col_name_to_split:
-        index['{}'.format(c)]=index['{}'.format(c)]*(index['precent_from_big_index']/index['new_big'])
-        
+        index['{}'.format(c)]=index['{}'.format(c)]*(index['precent_from_big_index']/index['new_big'])     
     return index
 
 def find_files_with_pattern(folder_path, pattern):
@@ -82,12 +81,6 @@ def find_files_with_pattern(folder_path, pattern):
             if pattern in filename:
                 files.append(os.path.join(root, filename))
     return files
-
-def print_before(name):
-    return print("{} before: ".format(name),round(forecast['{}'.format(name)].sum(),0))
-
-def print_after(name):
-    return print("{} after: ".format(name),round(forecast['{}'.format(name)].sum(),0))
 
 def logic_test_for_forecast(taz):
     print ('taz num under 0:',list(taz.loc[taz['TAZ']<=0]['TAZ']))
@@ -136,7 +129,6 @@ def logic_test_for_forecast(taz):
     col_to_check_minus=[]
     for i in col:
         taz_to_check_minus=taz_to_check_minus+list(taz.loc[taz['{}'.format(i)]<0]['TAZ'])
-    
     
     print ('taz num with minus:',list(set(taz_to_check_minus)))
     
@@ -216,7 +208,6 @@ def logic_test_for_forecast(taz):
     print ('taz num with emp dis prob:',taz_to_check_for_split_emp)
 
     print ('taz num with pop_emp_employed worng :',list(taz.loc[taz['sector']!="Palestinian"].loc[taz['pop_emp_employed']>0].loc[taz['pop']<=0]['TAZ']))
-    
     return
 
 def drop_geo(geoDF):
