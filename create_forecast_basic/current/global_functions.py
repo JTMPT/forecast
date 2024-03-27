@@ -36,6 +36,12 @@ def up_load_df(folder_path,file_name):
     df=df.dropna(how='all')
     return df
 
+def up_load_df_sub_sheet(folder_path,file_name, sheet_name):
+    path_df=r'{}\{}.xlsx'.format(folder_path,file_name)
+    df=pd.read_excel(path_df,sheet_name=sheet_name)
+    df=df.dropna(how='all')
+    return df
+
 def split_index_by_taz(index,taz,min_prec,col_name_to_split):
     index['index_area']=index.area
     
