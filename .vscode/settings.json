@@ -1,6 +1,5 @@
 {
     "python.analysis.extraPaths": [
-        "./create_forecast_basic/current",
-        "./create_forecast_basic/future/JTMT"
+        "./create_forecast_basic/current"
     ]
 }
