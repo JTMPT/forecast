@@ -23,7 +23,6 @@ path = os.getcwd()
 software_data_folder_location = r'{}\create_forecast_ad_hoc'.format(path)
 df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data_folder_location))
 
-
 create_forecast_basic_location=df_inputs_outputs['location'][0]
 forecast_version_basic_folder_location=df_inputs_outputs['location'][4]
 client_data_folder_location=df_inputs_outputs['location'][1]
@@ -50,9 +49,9 @@ index=uploading_index_table(forecast, client_data_folder_location, index_file_na
 divided_index=division_into_traffic_zones(index,forecast)
 
 ### שכבת אינדקס
-index_layer=index_layer_fun(divided_index, software_data_folder_location)
+index_layer=index_layer_fun(divided_index)
 
-#### ייצוא שכבת אינדקס לבקרת לקוח
+# #### ייצוא שכבת אינדקס לבקרת לקוח
 index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
 
 # ### חישוב תחזית
