@@ -1,4 +1,5 @@
 import pandas as pd
+from find_file import find_files_with_pattern
 from functions import make_point, up_load_gdb, up_load_shp
 
 def add_geographical_Features(forecast, software_data_folder_location):
@@ -19,8 +20,18 @@ def add_geographical_Features(forecast, software_data_folder_location):
         r'{}\background_files\subdistrict2008.gdb'.format(software_data_folder_location), 'subdistrict2008_ITM')
     muni_JTMT = up_load_gdb(
         r'{}\background_files\MUNI_border.gdb'.format(software_data_folder_location), 'muni_under_JTMT_ITM')
-    jeru_metro_jtmt_border = up_load_shp(
-        r'{}\background_files\jeru_metro_jtmt_border_221114.shp'.format(software_data_folder_location))
+    
+    # מחפש קבצים של jeru_metro_jtmt_border
+    jeru_metro_jtmt_border_files = find_files_with_pattern(r'{}\background_files'.format(software_data_folder_location), 'jeru_metro_jtmt_border')
+    filepath = ''
+
+    # לוקח את הקובץ של השכבה
+    for string in jeru_metro_jtmt_border_files:
+        if string.endswith('.shp'):
+            filepath = string
+
+    # מעלה את השכבה
+    jeru_metro_jtmt_border = up_load_shp(filepath)
 
     # Geographical join between traffic zones and data layers
     forecast_point_DISTRICT = forecast_point.sjoin(

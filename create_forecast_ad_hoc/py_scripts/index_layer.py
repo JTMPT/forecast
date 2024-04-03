@@ -1,40 +1,43 @@
 import pandas as pd
 import geopandas
 
-def index_layer_fun(divided_index):
+def index_layer_fun(divided_index, software_data_folder_location):
     index=divided_index.fillna(0)
 
-        #מקדים לייצרת תעסוקה עוקב משקי בית
-    Industry_precent_per_hh=0
-    Commerce_precent_per_hh=0.55
-    Business_precent_per_hh=0.2
-    Public_precent_per_hh=0.25
-    Agriculture_precent_per_hh=0
+    promoteres_df = pd.read_excel(r'{}\promoteres.xlsx'.format(software_data_folder_location))
 
-    precent_emp_per_hh=0.0
+    print(promoteres_df['key']['m2_Commerce_Hotel_to_emp'])
+        #מקדים לייצרת תעסוקה עוקב משקי בית
+    Industry_precent_per_hh=promoteres_df['value'][0]
+    Commerce_precent_per_hh=promoteres_df['value'][1]
+    Business_precent_per_hh=promoteres_df['value'][2]
+    Public_precent_per_hh=promoteres_df['value'][3]
+    Agriculture_precent_per_hh=promoteres_df['value'][4]
+
+    precent_emp_per_hh=promoteres_df['value'][5]
 
     #מקדימים לייצרת מקומות עבודה מ"ר לפי ייעוד קרקע
-    m2_Industry_to_emp=200
-    m2_Commerce_Hotel_to_emp=30
-    m2_Business_to_emp=30
-    m2_Public_to_emp=60
-    m2_Agriculture_to_emp=0
-    m2_Education_to_emp=0
+    m2_Industry_to_emp=promoteres_df['value'][6]
+    m2_Commerce_Hotel_to_emp=promoteres_df['value'][7]
+    m2_Business_to_emp=promoteres_df['value'][8]
+    m2_Public_to_emp=promoteres_df['value'][9]
+    m2_Agriculture_to_emp=promoteres_df['value'][10]
+    m2_Education_to_emp=promoteres_df['value'][11]
     m2_Commerce_to_emp=m2_Commerce_Hotel_to_emp
-    m2_Tourism_to_emp=100
+    m2_Tourism_to_emp=promoteres_df['value'][13]
 
     #מילוי
 
-    old_age_home_fill=1.5
-    uni_student_dorm_fill=3
+    old_age_home_fill=promoteres_df['value'][14]
+    uni_student_dorm_fill=promoteres_df['value'][15]
 
 
     #מקדימי תעסוקה בעקבות חינוך
 
 
-    emp_education_per_student=3.75
-    emp_Education_per_uni_student=0.1
-    emp_Education_per_Yeshiva_student=0.10
+    emp_education_per_student=promoteres_df['value'][16]
+    emp_Education_per_uni_student=promoteres_df['value'][17]
+    emp_Education_per_Yeshiva_student=promoteres_df['value'][18]
 
 
     convert_dict={
