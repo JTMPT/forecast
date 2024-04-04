@@ -1,0 +1,3 @@
+create_forecast_basic_software_location = os.path.dirname(future_folder)
+
+taz=up_load_shp(r'{}\background_files\TAZ_V4_240404_with_geo_info.shp'.format(create_forecast_basic_software_location))
