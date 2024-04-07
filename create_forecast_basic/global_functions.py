@@ -228,3 +228,20 @@ def add_geo_info_shp(taz,taz_border,software_folder_location,shp_name,col_name):
     taz=taz.fillna(0)
 
     return taz
+
+
+def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name,col_name):
+
+    forecast_point = make_point(taz_border)
+
+    # Load data layers
+    geo_info =  up_load_gdb(r'{}\background_files\{}.gdb'.format(software_folder_location,gdb_name), '{}'.format(layer_name))
+    
+    forecast_point_geo_info = forecast_point.sjoin(geo_info)[['Taz_num', '{}'.format(col_name)]]
+
+    taz = taz.merge(forecast_point_geo_info, on='Taz_num', how='left')
+
+    taz=taz.fillna(0)
+
+    
+    return taz
