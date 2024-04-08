@@ -246,3 +246,9 @@ def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name
 
     
     return taz
+
+# Function to extract the timestamp from a file name
+def extract_timestamp(file_name):
+    # Extract the timestamp from the file name
+    timestamp_str = file_name.split('_')[-1].split('.')[0]
+    return int(timestamp_str)
