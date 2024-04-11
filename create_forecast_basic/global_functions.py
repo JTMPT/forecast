@@ -231,7 +231,6 @@ def add_geo_info_shp(taz,taz_border,software_folder_location,shp_name,col_name):
 
 
 def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name,col_name):
-
     forecast_point = make_point(taz_border)
 
     # Load data layers
@@ -243,5 +242,9 @@ def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name
 
     taz=taz.fillna(0)
 
-    
     return taz
+
+def get_forecast_version_folder_location(file_path):
+    with open(file_path, 'r') as file:
+        forecast_version_folder_location = file.read()
+    return forecast_version_folder_location
