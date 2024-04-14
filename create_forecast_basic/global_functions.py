@@ -1,4 +1,7 @@
+import re
+from datetime import datetime
 import os
+import pathlib
 import pandas as pd
 import geopandas as gpd
 import fiona
@@ -248,3 +251,26 @@ def get_forecast_version_folder_location(file_path):
     with open(file_path, 'r') as file:
         forecast_version_folder_location = file.read()
     return forecast_version_folder_location
+
+def get_matching_files(folder_path, pattern):
+    matching_files=find_files_with_pattern(r'{}'.format(folder_path), pattern)
+
+    return matching_files
+
+def get_newest_date_file(folder_path, pattern):
+    # Your list of file paths
+    matching_files = get_matching_files(folder_path, pattern)
+
+    # Extract version numbers and dates
+    versions = [re.search(r'TAZ_V4_(\d+)', path).group(1) for path in matching_files if re.search(r'TAZ_V4_(\d+)', path)]
+
+    # Convert to datetime objects for comparison
+    dates = [datetime.strptime(version, "%y%m%d") for version in versions]
+
+    # Find the newest date
+    newest_date = max(dates)
+
+    # Format the newest date back to the original format to find the version
+    newest_version = 'TAZ_V4_' + newest_date.strftime("%y%m%d")
+
+    return newest_version[7:]
