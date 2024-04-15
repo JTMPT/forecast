@@ -257,20 +257,53 @@ def get_matching_files(folder_path, pattern):
 
     return matching_files
 
+# def get_newest_date_file(folder_path, pattern):
+#     # Your list of file paths
+#     matching_files = get_matching_files(folder_path, pattern)
+
+#     # Extract version numbers and dates
+#     versions = [re.search(r'(\d+)', path).group(1) for path in matching_files if re.search(r'(\d+)', path)]
+
+#     # Convert to datetime objects for comparison
+#     dates = [datetime.strptime(version, "%y%m%d") for version in versions]
+
+#     # Find the newest date
+#     newest_date = max(dates)
+
+#     # Format the newest date back to the original format to find the version
+#     newest_version = newest_date.strftime("%y%m%d")
+
+#     return newest_version
+
 def get_newest_date_file(folder_path, pattern):
     # Your list of file paths
     matching_files = get_matching_files(folder_path, pattern)
 
-    # Extract version numbers and dates
-    versions = [re.search(r'TAZ_V4_(\d+)', path).group(1) for path in matching_files if re.search(r'TAZ_V4_(\d+)', path)]
+    # Updated regex to match any part of the filename containing 'YYMMDD' format
+    # This regex looks for any sequence of 6 digits that could represent a date
+    date_regex = re.compile(r'(\d{2})(\d{2})(\d{2})')
+    
+    dates = []
+    for path in matching_files:
+        match = date_regex.search(path)
+        if match:
+            # Construct a date string in 'YYMMDD' format
+            date_str = match.group(0)
+            try:
+                # Attempt to convert the extracted string to a datetime object
+                date = datetime.strptime(date_str, "%y%m%d")
+                dates.append(date)
+            except ValueError:
+                # If conversion fails, it means the extracted string is not a valid date
+                continue
 
-    # Convert to datetime objects for comparison
-    dates = [datetime.strptime(version, "%y%m%d") for version in versions]
+    if dates:
+        # Find the newest date
+        newest_date = max(dates)
 
-    # Find the newest date
-    newest_date = max(dates)
+        # Format the newest date back to the original format to find the version
+        newest_version = newest_date.strftime("%y%m%d")
 
-    # Format the newest date back to the original format to find the version
-    newest_version = 'TAZ_V4_' + newest_date.strftime("%y%m%d")
-
-    return newest_version[7:]
+        return newest_version
+    else:
+        return None
