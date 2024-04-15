@@ -12,4 +12,4 @@ def run_notebook(notebook_path):
 
 path = os.getcwd()
 software_folder_location = r'{}\create_forecast_basic\future'.format(path)
-notebook_path = r'{}\arab_and_palestinian\run_arab_and_palestinian.ipynb'.format(software_folder_location)
+notebook_path = r'{}\General\run_General_from_future.ipynb'.format(software_folder_location)
