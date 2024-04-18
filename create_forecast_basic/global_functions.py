@@ -248,6 +248,11 @@ def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name
     
     return taz
 
+def get_forecast_version_folder_location(file_path):
+    with open(file_path, 'r') as file:
+        forecast_version_folder_location = file.read()
+    return forecast_version_folder_location
+
 def get_matching_files(folder_path, pattern):
     matching_files=find_files_with_pattern(r'{}'.format(folder_path), pattern)
 
