@@ -1,4 +1,6 @@
+from datetime import datetime
 import os
+import re
 import pandas as pd
 import geopandas as gpd
 import fiona
@@ -245,3 +247,33 @@ def add_geo_info_gdb(taz,taz_border,software_folder_location,gdb_name,layer_name
 
     
     return taz
+
+def get_forecast_version_folder_location(file_path):
+    with open(file_path, 'r') as file:
+        forecast_version_folder_location = file.read()
+    return forecast_version_folder_location
+
+def get_matching_files(folder_path, pattern):
+    matching_files=find_files_with_pattern(r'{}'.format(folder_path), pattern)
+
+    return matching_files
+
+
+def get_newest_date_file(folder_path, pattern):
+    # Your list of file paths
+    matching_files = get_matching_files(folder_path, pattern)
+
+    # Adjusted regex to match a specific date format in the filename
+    # Assuming the date is always in the format of six digits (YYMMDD) following the pattern
+    versions = [re.search(r'(\d{6})', path).group(1) for path in matching_files if re.search(r'(\d{6})', path)]
+
+    # Convert to datetime objects for comparison
+    dates = [datetime.strptime(version, "%y%m%d") for version in versions]
+
+    # Find the newest date
+    newest_date = max(dates)
+
+    # Format the newest date back to the original format to find the version
+    newest_version = newest_date.strftime("%y%m%d")
+
+    return newest_version
