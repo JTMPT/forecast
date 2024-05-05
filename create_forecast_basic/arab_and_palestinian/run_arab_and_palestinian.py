@@ -11,5 +11,5 @@ def run_notebook(notebook_path):
     nb_out = ep.preprocess(nb_in)
 
 path = os.getcwd()
-software_folder_location = r'{}\create_forecast_basic\future'.format(path)
-notebook_path = r'{}\arab_and_palestinian\run_arab_and_palestinian.ipynb'.format(software_folder_location)
+software_folder_location = r'{}\create_forecast_basic\arab_and_palestinian'.format(path)
+notebook_path = r'{}\run_arab_and_palestinian.ipynb'.format(software_folder_location)

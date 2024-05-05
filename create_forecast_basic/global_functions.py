@@ -263,8 +263,6 @@ def get_newest_date_file(folder_path, pattern):
     # Your list of file paths
     matching_files = get_matching_files(folder_path, pattern)
 
-    print(matching_files)
-
     # Adjusted regex to match a specific date format in the filename
     # Assuming the date is always in the format of six digits (YYMMDD) following the pattern
     versions = [re.search(r'(\d{6})', path).group(1) for path in matching_files if re.search(r'(\d{6})', path)]
