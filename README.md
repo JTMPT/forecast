@@ -9,7 +9,7 @@
 
 - לפני התחלת השימוש, ודאו שפייתון מותקן על המחשב. ניתן להוריד את פייתון מהקישור הבא: <https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe>
 - ודאו ש-Python מתווסף לנתיב המערכת.
-- [סרטון הדגמה להתקנה של פייתון](https://www.youtube.com/watch?v=m9I-YpOjXVQ)
+- <a href="https://www.youtube.com/watch?v=m9I-YpOjXVQ" target="_blank">סרטון הדגמה להתקנה של פייתון</a>
 
 2\. **סביבת עבודה**:
 
