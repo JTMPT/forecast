@@ -34,7 +34,7 @@
 - התקינו את הספריות מהקובץ requirements.txt באמצעות הפקודה: pip install -r requirements.txt
 - אם נתקלתם בשגיאות "No module named", התקינו את הספריות החסרות ידנית.
 - סרטון הדגמה להתקנת ספריות: <https://www.youtube.com/watch?v=2hojzuyddaA>
-- <a href="http://example.com/" target="_blank">סרטון הדגמה להתקנת ספריות</a>
+- <a href="https://www.youtube.com/watch?v=2hojzuyddaA" target="_blank">סרטון הדגמה להתקנת ספריות</a>
 
 6\. **התקנת תוספים**:
 
