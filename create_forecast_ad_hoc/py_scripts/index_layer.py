@@ -6,7 +6,7 @@ def index_layer_fun(divided_index, software_data_folder_location):
 
     promoteres_df = pd.read_excel(r'{}\promoteres.xlsx'.format(software_data_folder_location))
 
-    
+    print(promoteres_df['key']['m2_Commerce_Hotel_to_emp'])
         #מקדים לייצרת תעסוקה עוקב משקי בית
     Industry_precent_per_hh=promoteres_df['value'][0]
     Commerce_precent_per_hh=promoteres_df['value'][1]
