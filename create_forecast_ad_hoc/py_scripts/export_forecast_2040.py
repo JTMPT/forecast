@@ -7,7 +7,8 @@ from functions import up_load_df, delet_and_add_by_TAZ
 def export_forecast(forecast, client_data_folder_location, file_date, forecast_version,software_data_folder_location):
     col = [
         'Taz_num', 
-        'Name_hebre', 
+        'Name_hebre',
+        'Muni_Eng', 
         'main_sector', 
         'classification_name', 
         'aprt_20', 
@@ -57,6 +58,7 @@ def export_forecast(forecast, client_data_folder_location, file_date, forecast_v
 
     forecast_col =[
          'TAZ', 
+         'Muni_Eng',
          'yosh', 
          'in_jerusalem_metropolin', 
          'jerusalem_city', 
@@ -96,6 +98,7 @@ def export_forecast(forecast, client_data_folder_location, file_date, forecast_v
 
     format_needed_col = [
       'TAZ', 
+      'Muni_Eng',
       'yosh', 
       'in_jerusalem_metropolin', 
       'jerusalem_city', 

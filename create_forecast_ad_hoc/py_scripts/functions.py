@@ -64,3 +64,12 @@ def delet_and_add_by_TAZ(forecast,df):
     df=df.loc[~(df['TAZ'].isin(lst_of_taz))]
     #הוספה של האזורי תנועה החדשים
     return pd.concat([df, forecast[list(df)]], axis=0)
+
+def change_Muni_Heb_to_Muni_Eng(software_data_folder_location, forecast):
+    muni_english = pd.read_excel(r'{}\english_names.xlsx'.format(software_data_folder_location))
+    muni_heb_mapping = muni_english.set_index('Muni_Heb')
+
+    forecast = forecast.merge(muni_heb_mapping, how='left', left_on='Muni_Heb', right_index=True)
+    forecast.dropna(subset=['Muni_Heb'], inplace=True)
+
+    return forecast
