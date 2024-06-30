@@ -59,7 +59,7 @@ def split_index_by_taz(index,taz,min_prec,col_name_to_split):
     return index
 
 
-def delet_and_add_by_TAZ(forecast,df):
+def delete_and_add_by_TAZ(forecast,df):
     lst_of_taz=list(forecast.TAZ)
     #מחיקה של אזורי תנועה החדשים למנוע כפילות
     df=df.loc[~(df['TAZ'].isin(lst_of_taz))]
