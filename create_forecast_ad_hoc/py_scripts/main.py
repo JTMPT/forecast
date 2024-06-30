@@ -12,8 +12,8 @@ from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
 from uploading_index_table_elements import uploading_index_table
 from export_forecast_2040 import export_forecast
-#הגדרות כלליות
 
+#הגדרות כלליות
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
