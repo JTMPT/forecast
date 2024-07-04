@@ -277,3 +277,24 @@ def get_newest_date_file(folder_path, pattern):
     newest_version = newest_date.strftime("%y%m%d")
 
     return newest_version
+
+def sum_scenarios(sum_df,df,scenario_name,col_name,col_need,num_round):
+    df=round(pd.pivot_table(df,index=col_name,aggfunc=sum)[col_need],num_round)
+    df['scenario']=scenario_name
+    sum_df=pd.concat([sum_df,df],axis=0)
+    
+    return sum_df
+
+def group_sector(df):
+    df['group']=df['main_secto']
+    df.loc[df['group']=='arabs_behined_seperation_wall','group']='Arab'
+    df.loc[df['group']=='arabs_behined_seperation_wall','group']='Arab'
+    return df
+
+def compare_scenarios(sum_df,col_index):
+    sum_df=sum_df.pivot_table(index=col_index,columns='scenario',aggfunc=sum)
+    sum_df=sum_df.fillna(0)
+    sum_df = sum_df.loc[:, ~(sum_df == 0).all(axis=0)]
+    sum_df=sum_df.loc[ ~(sum_df == 0).all(axis=1),:]
+    
+    return sum_df
