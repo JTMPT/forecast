@@ -253,6 +253,11 @@ def get_forecast_version_folder_location(file_path):
         forecast_version_folder_location = file.read()
     return forecast_version_folder_location
 
+def get_model_versions_folder_location(file_path):
+    with open(file_path, 'r') as file:
+        model_versions_folder_location = file.read()
+    return model_versions_folder_location
+
 def get_matching_files(folder_path, pattern):
     matching_files=find_files_with_pattern(r'{}'.format(folder_path), pattern)
 
