@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from adding_an_addition_following_the_index import adding_an_addition
+from functions import change_Muni_Heb_to_Muni_Eng
 from division_into_traffic_zones_of_plans import division_into_traffic_zones
 from export_geo_layer_for_client_control import export_geo_layer
 from export_index_layer_for_client_control import export_index_layer
@@ -34,20 +35,22 @@ index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(for
 
 # העלת אזורי תנועה לחישוב
 forecast=clientTaz(client_data_folder_location)
-
 #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
 forecast=add_geographical_Features(forecast, software_data_folder_location)
 
-# #### ייצוא שכבת אזורי תנועה לבקרת לקוח
+#### שינוי עמודה Muni_Heb
+forecast=change_Muni_Heb_to_Muni_Eng(software_data_folder_location, forecast)
+
+#### ייצוא שכבת אזורי תנועה לבקרת לקוח
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
 #### מצב קיים לבקרה
 forecast_2020=export_status_exists(create_forecast_basic_location, forecast_version_basic_folder_location, forecast, software_data_folder_location,client_data_folder_location, file_date)
 
-# #### העלאת מרכיבי טבלת אינדקס
+#### העלאת מרכיבי טבלת אינדקס
 index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
 
-### חלוקה לאזורי תנועה של התכניות
+## חלוקה לאזורי תנועה של התכניות
 divided_index=division_into_traffic_zones(index,forecast)
 
 ### שכבת אינדקס
@@ -56,8 +59,7 @@ index_layer=index_layer_fun(divided_index, software_data_folder_location)
 #### ייצוא שכבת אינדקס לבקרת לקוח
 index_layer_for_client_control=export_index_layer(index_layer,client_data_folder_location,file_date,forecast_version)
 
-# ### חישוב תחזית
-
+### חישוב תחזית
 #### הוספת תוספת בעקבות האינדקס
 forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
 
