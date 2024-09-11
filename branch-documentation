@@ -1,0 +1,3 @@
+הסבר על הענף:
+1. הוספתי הרצה של add_senario_col.ipynb בסוף הקוד שמוסיף עמודת תרחיש לכל קובץ
+2. שיניתי את הקוד שייצא את forecast_2020_till_2050 לתיקיית OVERVIEW, מייצא את TAZ_V4_240908_with_geo_info לתיקיית SHP ומעביר קבצים ישנים של puma, SED ו-BaseProjections לתיקייה בשם OLD
