@@ -303,3 +303,4 @@ def compare_scenarios(sum_df,col_index):
     sum_df=sum_df.loc[ ~(sum_df == 0).all(axis=1),:]
     
     return sum_df
+
