@@ -30,7 +30,6 @@ df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data
 
 # קביעת מיקומי קבצים ותיקיות:
 # מיקומי קבצי קלט ופלט מוגדרים על פי קריאת אקסל.
-
 forecast_version_basic_folder_location=df_inputs_outputs['location'][4]
 client_data_folder_location=df_inputs_outputs['location'][1]
 forecast_version=df_inputs_outputs['location'][2]

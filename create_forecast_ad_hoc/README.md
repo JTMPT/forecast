@@ -1,6 +1,3 @@
-גירסא creat_forecast_ad_hoc_01
-https://github.com/DavidPerelman/creat_forecast_ad_hoc/tree/creat_forecast_ad_hoc_01
-
 **התקנה והרצה של פרויקט תחזית ad_hoc**
 
 **דרישות:**
@@ -50,7 +47,6 @@ https://github.com/DavidPerelman/creat_forecast_ad_hoc/tree/creat_forecast_ad_ho
 - בתוך תיקיית V4, צרו תיקייה בשם OVERVIEW ודאו שהיא כתובה באותיות גדולות.
 - בתוך תיקיית V4, צרו תיקייה בשם SHP ודאו שהיא כתובה באותיות גדולות.
 - בתוך תיקיית V4, צרו תיקייה בשם: BASE_YEAR. ודאו שהיא כתובה באותיות גדולות.
-
 - צרו תיקיית לקוח (במיקום שונה מתיקיית forecast_by_version).
 - בתוך תיקיית לקוח, צרו תיקייה בשם For_approval.
 - בתוך תיקיית For_approval, צרו תיקייה בשם Reference_tabels.
