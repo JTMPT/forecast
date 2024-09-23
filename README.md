@@ -49,7 +49,7 @@
 - בתוך תיקיית V4, צרו 3 תיקיות: BASE_YEAR, BAU, IPLAN ו-JTMT. ודאו שהן כתובות באותיות גדולות.
 - בתוך כל תיקייה מהתיקיות: BASE_YEAR, BAU, IPLAN ו-JTMT צרו תיקייה בשם OLD ודאו שהיא כתובה באותיות גדולות.
 
-  8\. **הגדרת נתיב תיקיית הפלט**:
+8\. **הגדרת נתיב תיקיית הפלט**:
 
 - בתיקיית create_forecast_basic, פתחו את הקובץ background_files/forecast_version_folder_location.txt.
 - ערוך את הקובץ והזן את הנתיב של תיקיית V4 שיצרתם. לדוגמה: C:\Users\username\Documents\forecast_by_version\V4.
