@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import re
+import shutil
 import pandas as pd
 import geopandas as gpd
 import fiona
@@ -304,3 +305,15 @@ def compare_scenarios(sum_df,col_index):
     
     return sum_df
 
+def move_old_forcasts(sen, forecast_version_folder_location):
+    for s in sen:
+        source = r'{}\{}'.format(forecast_version_folder_location, s.upper())
+        destination = r'{}\{}\OLD'.format(forecast_version_folder_location, s.upper())
+
+        allfiles = os.listdir(source)
+
+        for file in os.listdir(source):
+            if file.endswith('.xlsx'):
+                source_file = os.path.join(source, file)
+                target_file = os.path.join(destination, file)
+                shutil.move(source_file, target_file)
