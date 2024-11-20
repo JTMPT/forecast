@@ -1,3 +1,4 @@
+# ייבוא ספריות ופונקציות
 import os
 import pandas as pd
 from adding_an_addition_following_the_index import adding_an_addition
@@ -11,19 +12,24 @@ from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
 from uploading_index_table_elements import uploading_index_table
 from export_forecast_2040 import export_forecast
-#הגדרות כלליות
 
+# הגדרות כלליות
+# הגדרת תצוגה מקסימלית עבור נתוני Pandas.
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
+# תאריך
 file_date=pd.Timestamp.today().strftime('%y%m%d')
 
-#העלת משתנים להרצת הקוד
+# העלת משתנים להרצת הקוד
+# קריאת נתיבים וקבצים מקובץ אקסל.
 path = os.getcwd()
 software_data_folder_location = r'{}\create_forecast_ad_hoc'.format(path)
+create_forecast_basic_location = r'{}\create_forecast_basic'.format(path)
 df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data_folder_location))
 
-create_forecast_basic_location=df_inputs_outputs['location'][0]
+# קביעת מיקומי קבצים ותיקיות:
+# מיקומי קבצי קלט ופלט מוגדרים על פי קריאת אקסל.
 forecast_version_basic_folder_location=df_inputs_outputs['location'][4]
 client_data_folder_location=df_inputs_outputs['location'][1]
 forecast_version=df_inputs_outputs['location'][2]
