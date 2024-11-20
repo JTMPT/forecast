@@ -30,10 +30,10 @@ df_inputs_outputs = pd.read_excel(r'{}\inputs_outputs.xlsx'.format(software_data
 
 # קביעת מיקומי קבצים ותיקיות:
 # מיקומי קבצי קלט ופלט מוגדרים על פי קריאת אקסל.
-forecast_version_basic_folder_location=df_inputs_outputs['location'][4]
-client_data_folder_location=df_inputs_outputs['location'][1]
-forecast_version=df_inputs_outputs['location'][2]
-v_date=df_inputs_outputs['location'][3]
+forecast_version_basic_folder_location=df_inputs_outputs['location'][3]
+client_data_folder_location=df_inputs_outputs['location'][0]
+forecast_version=df_inputs_outputs['location'][1]
+v_date=df_inputs_outputs['location'][2]
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
 
 # העלת אזורי תנועה לחישוב

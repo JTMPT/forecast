@@ -8,7 +8,7 @@ import sys
 
 def export_status_exists(create_forecast_basic_location, forecast_version_basic_folder_location, forecast, software_data_folder_location,client_data_folder_location, file_date):
     sys.path.insert(0, r'{}'.format(create_forecast_basic_location))
-    from run_create_forecast_basic import run_notebook
+    from run_basic import run_notebook
 
     folder_path=r'{}\For_approval\Reference_tabels'.format(client_data_folder_location)
     pattern='TAZ_V'
