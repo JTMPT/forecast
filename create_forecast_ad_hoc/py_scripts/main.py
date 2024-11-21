@@ -32,7 +32,6 @@ forecast_version=df_inputs_outputs['location'][2]
 v_date=df_inputs_outputs['location'][3]
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
 
-print(create_forecast_basic_location)
 # העלת אזורי תנועה לחישוב
 forecast=clientTaz(client_data_folder_location)
 #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
