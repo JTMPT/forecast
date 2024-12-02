@@ -1,17 +1,29 @@
 
 import os
-import subprocess
+import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
 
 path = os.getcwd()
 software_folder_location = r'{}\create_forecast_basic\current'.format(path)
 
 def run_notebook(notebook_path):
     try:
-        subprocess.check_call(['jupyter', 'nbconvert', '--to', 'notebook', '--execute', notebook_path])
-        return True  # Execution successful
-    except subprocess.CalledProcessError as e:
-        print(f"Error executing notebook: {e}")
-        return False  # Execution failed
+        # קריאת המחברת עם קידוד UTF-8
+        with open(notebook_path, encoding='utf-8') as ff:
+            nb_in = nbformat.read(ff, as_version=4)
+
+        # יצירת ExecutePreprocessor
+        ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
+
+        # הרצת המחברת
+        nb_out = ep.preprocess(nb_in, {'metadata': {'path': './'}})
+
+        print(f"Notebook '{notebook_path}' executed successfully.")
+        return nb_out
+    except Exception as e:
+        print(f"Error running notebook: {e}")
+        return None
+
 
 if __name__ == "__main__":
     notebook_path = r'{}\run_JTMT_from_future.ipynb'.format(software_folder_location)

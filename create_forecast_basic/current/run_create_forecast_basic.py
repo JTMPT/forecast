@@ -6,7 +6,6 @@ path = os.getcwd()
 software_folder_location = r'{}\create_forecast_basic\current'.format(path)
 
 def run_notebook(notebook_path):
-
     try:
         subprocess.check_call(['jupyter', 'nbconvert', '--to', 'notebook', '--execute', notebook_path])
         return True  # Execution successful
