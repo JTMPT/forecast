@@ -1,5 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./create_forecast_basic/current"
-    ]
-}
