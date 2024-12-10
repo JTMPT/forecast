@@ -94,12 +94,15 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
+<<<<<<< HEAD
+=======
 # UV
 #   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
 #uv.lock
 
+>>>>>>> create_ABM_forecast_v1.8.2_with_ad_hoc
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -169,3 +172,19 @@ cython_debug/
 
 .vscode
 .idea
+
+forecast_by_version
+
+create_forecast_ad_hoc/create_forecast_basic_ad_hoc/arab_and_palestinian/Intermediates
+create_forecast_ad_hoc/create_forecast_basic_ad_hoc/current/Intermediates
+create_forecast_ad_hoc/create_forecast_basic_ad_hoc/current/Monitoring
+
+create_forecast_basic/comparison_tools
+
+create_forecast_basic/arab_and_palestinian/Intermediates
+create_forecast_basic/current/Intermediates
+create_forecast_basic/current/Monitoring
+create_forecast_basic/future/bau/Intermediates
+create_forecast_basic/future/iplan/Intermediates
+create_forecast_basic/future/JTMT/Intermediates
+create_forecast_basic/future/JTMT/Monitoring
