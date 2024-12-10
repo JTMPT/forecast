@@ -172,8 +172,8 @@ cython_debug/
 
 forecast_by_version
 
-# create_forecast_ad_hoc/create_forecast_basic_ad_hoc/arab_and_palestinian/Intermediates
-# create_forecast_ad_hoc/create_forecast_basic_ad_hoc/current/Intermediates
+create_forecast_ad_hoc/create_forecast_basic_ad_hoc/arab_and_palestinian/Intermediates
+create_forecast_ad_hoc/create_forecast_basic_ad_hoc/current/Intermediates
 
 create_forecast_basic/arab_and_palestinian/Intermediates
 create_forecast_basic/current/Intermediates
