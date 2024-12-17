@@ -1,6 +1,8 @@
-fiona==1.9.5
-geopandas==0.14.3
-ipykernel==6.29.3
+pywin32==307 
+pyyaml
+fiona
+geopandas
+ipykernel
 jupyter
-openpyxl==3.0.10
-pandas==2.1.4
+openpyxl
+pandas
