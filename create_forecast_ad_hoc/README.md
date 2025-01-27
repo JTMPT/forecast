@@ -1,2 +1,1 @@
-גירסא creat_forecast_ad_hoc_01
-https://github.com/DavidPerelman/creat_forecast_ad_hoc/tree/creat_forecast_ad_hoc_01
+
