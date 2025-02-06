@@ -172,10 +172,10 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-create_forecast_basic/future/JTMT/Intermediates
-create_forecast_basic/future/JTMT/Monitoring
+# create_forecast_basic/future/JTMT/Intermediates
+# create_forecast_basic/future/JTMT/Monitoring
 
-create_forecast_basic/outputs
+# create_forecast_basic/outputs
 
 *.pyc
 *_output.ipynb
