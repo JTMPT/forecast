@@ -178,5 +178,8 @@ create_forecast_basic/future/JTMT/Monitoring
 create_forecast_basic/outputs
 
 *.pyc
+*.nbconvert.ipynb
 *_output.ipynb
 *output_notebooks/
+.~lock.*.xlsx#
+.~lock.*
